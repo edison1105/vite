@@ -9,7 +9,8 @@ test_script:
   - git --version
   - node --version
   - yarn --version
-  - yarn build
+  - cd packages\vite && yarn build
+  - cd packages\plugin-vue && yarn build
   - yarn test
 
 cache:

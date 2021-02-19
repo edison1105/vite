@@ -28,11 +28,12 @@ jobs:
     steps:
       - checkout
       - *restore_cache
-      - run: rm -rf ~/project/node_modules/esbuild/.install
       - *install_deps
       - *save_cache
-      - run: yarn build
-      - run: yarn test
+      - run: cd packages/vite && yarn build
+      - run: cd packages/plugin-vue && yarn build
+      - run: yarn test-serve --runInBand
+      - run: yarn test-build --runInBand
 
 workflows:
   version: 2
